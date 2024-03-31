@@ -1,4 +1,6 @@
 from tests import editDistanceTest
 from editDistanceDP import editDistanceDP
+from editDistanceDAC import editDistanceDAC
 
 editDistanceTest(editDistanceDP)
+editDistanceTest(editDistanceDAC)
