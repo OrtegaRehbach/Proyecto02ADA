@@ -1,6 +1,3 @@
-from constants import COST
-
-
 def editDistanceDP(x: str, y: str) -> int:
     '''
     Levenshtein distance or Edit distance using a Bottom-Up Dynamic Programming approach
@@ -16,11 +13,10 @@ def editDistanceDP(x: str, y: str) -> int:
             elif x[i-1] == y[j-1]:
                 dp[i][j] = dp[i-1][j-1]
             else:
-                dp[i][j] = min(
-                    COST['replace'] + dp[i-1][j-1],  # Replace
-                    COST['delete'] + dp[i-1][j],    # Delete
-                    COST['insert'] + dp[i][j-1]     # Insert
-                )
+                dp[i][j] = 1 + min(dp[i-1][j-1],  # Replace
+                                   dp[i-1][j],    # Delete
+                                   dp[i][j-1]     # Insert
+                                   )
 
     return dp[m][n]
 
