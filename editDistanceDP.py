@@ -1,4 +1,4 @@
-from constants import cost
+from constants import COST
 
 
 def editDistanceDP(x: str, y: str) -> int:
@@ -17,9 +17,16 @@ def editDistanceDP(x: str, y: str) -> int:
                 dp[i][j] = dp[i-1][j-1]
             else:
                 dp[i][j] = min(
-                    cost['replace'] + dp[i-1][j-1],  # Replace
-                    cost['delete'] + dp[i-1][j],    # Delete
-                    cost['insert'] + dp[i][j-1]     # Insert
+                    COST['replace'] + dp[i-1][j-1],  # Replace
+                    COST['delete'] + dp[i-1][j],    # Delete
+                    COST['insert'] + dp[i][j-1]     # Insert
                 )
 
     return dp[m][n]
+
+
+def editDistanceDPTimeComplexity(x: int, y: int) -> int:
+    '''
+    Time complexity: O(m*n)
+    '''
+    return x * y
