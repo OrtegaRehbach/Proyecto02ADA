@@ -1,5 +1,3 @@
-from constants import SEQUENCE_DIR
-
 
 def getDirectoryFiles(directory: str) -> list:
     '''
@@ -25,8 +23,9 @@ def genRecords(function: callable, saveAs: str, inputDir: str) -> None:
     files = getDirectoryFiles(inputDir)
     records = []
 
-    for file in files:
-        with open(f'{SEQUENCE_DIR}/{file}', 'r') as f:
+    for idx, file in enumerate(files):
+        with open(f'{inputDir}/{file}', 'r') as f:
+            print(f'{file} started ({idx+1}/{len(files)})')
             lines = f.readlines()
             x, y = lines[0].strip(), lines[1].strip()
             x_len, y_len = len(x), len(y)
@@ -36,6 +35,7 @@ def genRecords(function: callable, saveAs: str, inputDir: str) -> None:
             end = time()
 
             records.append((file, x_len, y_len, end-start))
+            print(f'{file} done ({idx+1}/{len(files)}) ({end-start} seconds)')
 
     with open(f'./times/{saveAs}.csv', 'w') as f:
         f.write('File,Length X,Length Y,Time\n')

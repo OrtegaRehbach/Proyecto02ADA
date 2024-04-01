@@ -1,0 +1,2 @@
+All of the test files are actual genetic data (save the spell comparisons)
+taken from GenBank. Files fli*.txt come from bacterial flagellar protiens,
